@@ -14,14 +14,14 @@ public class Encryption {
             Path path;
 
             do {
-                System.out.println("Введите ключ от 1 до 81");
+                System.out.println("Введите ключ от 1 до 80");
                 while (!scanner.hasNextInt()) {
                     System.out.println("Введите число");
                     scanner.next();
                 }
                 key = scanner.nextInt();
-                if (key < 1 || key > 81) System.out.println("Введите число от 1 до 81 включительно");
-            } while (key < 1 || key > 81);
+                if (key < 1 || key > 80) System.out.println("Введите число от 1 до 80 включительно");
+            } while (key < 1 || key > 80);
 
 
                 System.out.println("Введите путь к текстовому файлу с исходным текстом");
@@ -43,7 +43,7 @@ public class Encryption {
 
 
     private static void encryptionToFile(Path path, int key) {
-        String allStr = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,\"«»:-—¬!\\n?() ";
+        String allStr = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,\"«»:-—¬!?() ";
 
         char[] allChar = allStr.toCharArray();
         ArrayList<Character> arrAll = new ArrayList<>();
@@ -64,11 +64,11 @@ public class Encryption {
 
             for (int i = 0; i < arrInFile.size(); i++) {
                 if (!arrAll.contains(arrInFile.get(i))) {
-                    //просто этот символ скопировать
                     System.out.println("В тексте используются следующие запрещенные символы: " + arrInFile.get(i));
-                    return;
+                    arrCode.add(i, arrInFile.get(i));
                 } else {
                     for (int j = 0; j < arrAll.size(); j++) {
+
                         if ((arrInFile.get(i).equals(arrAll.get(j)) && (j + key) >= arrAll.size())) {
                             arrCode.add(i, arrAll.get(j + key - arrAll.size()));
                         } else if (arrInFile.get(i).equals(arrAll.get(j))) {
