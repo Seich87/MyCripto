@@ -3,6 +3,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //метод по выбору режима шифрования();
+        //метод по визуализации(); будет возращать при нажатии на кнопку путь к файлу
         while (true) {
             try {
                 Scanner scanner = new Scanner(System.in);

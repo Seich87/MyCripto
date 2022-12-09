@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Encryption {
 
     public void encryption() {
+        //метод по вводу ключа(); get, set
+        //
+
         try {
             Scanner scanner = new Scanner(System.in);
             String strPath;
@@ -14,14 +17,14 @@ public class Encryption {
             Path path;
 
             do {
-                System.out.println("Введите ключ от 1 до 80");
+                System.out.println("Введите ключ от 1 до 74");
                 while (!scanner.hasNextInt()) {
                     System.out.println("Введите число");
                     scanner.next();
                 }
                 key = scanner.nextInt();
-                if (key < 1 || key > 80) System.out.println("Введите число от 1 до 80 включительно");
-            } while (key < 1 || key > 80);
+                if (key < 1 || key > 74) System.out.println("Введите число от 1 до 74 включительно");
+            } while (key < 1 || key > 74);
 
 
                 System.out.println("Введите путь к текстовому файлу с исходным текстом");
@@ -43,7 +46,7 @@ public class Encryption {
 
 
     private static void encryptionToFile(Path path, int key) {
-        String allStr = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,\"«»:-—¬!?() ";
+        String allStr = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,\":-!? ";
 
         char[] allChar = allStr.toCharArray();
         ArrayList<Character> arrAll = new ArrayList<>();
