@@ -70,7 +70,7 @@ public class Decoding {
 
                     for (int j = 0; j < arrAll.size(); j++) {
                         if (arrAll.get(j).equals(arrInFile.get(i)) && (j - key) <= 0) {
-                            arrCode.add(i, arrAll.get(j - key + arrAll.size() - 1));
+                            arrCode.add(i, arrAll.get(j - key + arrAll.size()));
                         } else if (arrAll.get(j).equals(arrInFile.get(i))){
                             arrCode.add(i, arrAll.get(j - key));
                         }
