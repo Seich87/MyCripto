@@ -5,11 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Encryption {
-
     public void encryption() {
-        //метод по вводу ключа(); get, set
-        //
-
         try {
             Scanner scanner = new Scanner(System.in);
             String strPath;
