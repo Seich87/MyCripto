@@ -66,10 +66,12 @@ public class Decoding {
                     System.out.println("В тексте используются следующие запрещенные символы: " + arrInFile.get(i));
                     arrCode.add(i, arrInFile.get(i));
                 } else {
+                    //АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,":-!?
+
                     for (int j = 0; j < arrAll.size(); j++) {
-                        if ((j - key) <= 0) {
+                        if (arrAll.get(j).equals(arrInFile.get(i)) && (j - key) <= 0) {
                             arrCode.add(i, arrAll.get(j - key + arrAll.size() - 1));
-                        } else {
+                        } else if (arrAll.get(j).equals(arrInFile.get(i))){
                             arrCode.add(i, arrAll.get(j - key));
                         }
                     }
