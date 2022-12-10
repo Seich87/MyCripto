@@ -2,46 +2,51 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Encryption {
-    public void encryption() {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            String strPath;
-            int key;
-            Path path;
+    Scanner scanner = new Scanner(System.in);
+    private int key = keySet();
+    private Path path = filePath();
 
-            do {
-                System.out.println("Введите ключ от 1 до 74");
-                while (!scanner.hasNextInt()) {
-                    System.out.println("Введите число");
-                    scanner.next();
-                }
-                key = scanner.nextInt();
-                if (key < 1 || key > 74) System.out.println("Введите число от 1 до 74 включительно");
-            } while (key < 1 || key > 74);
+    public int getKey() {
+        return key;
+    }
 
+    public Path getPath() {
+        return path;
+    }
 
-                System.out.println("Введите путь к текстовому файлу с исходным текстом");
+    private int keySet() {
+        do {
+            System.out.println("Введите ключ от 1 до 74");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Введите число");
+                scanner.next();
+            }
+            key = scanner.nextInt();
+            if (key < 1 || key > 74) System.out.println("Введите число от 1 до 74 включительно");
+        } while (key < 1 || key > 74);
+        return key;
+    }
 
-                strPath = scanner.next();
-                path = Paths.get(strPath);
-
-                if (!(path.toFile().isFile())) {
-                    System.out.println("Введенный файл отсутствует по указанному пути на диске");
-                    return;
-                }
-
-
-            encryptionToFile(path, key);
-        } catch (Exception e) {
-            e.printStackTrace();
+    private Path filePath() {
+        String strPath = "";
+        while (true) {
+            System.out.println("Введите путь к текстовому файлу с исходным текстом");
+            strPath = scanner.next();
+            if (!(Paths.get(strPath).toFile().isFile())) {
+                System.out.println("Данный файл отсутствует");
+            } else if (Paths.get(strPath).toFile().isFile()) {
+                break;
+            }
         }
+        return Path.of(strPath);
     }
 
 
-    private static void encryptionToFile(Path path, int key) {
+    void encryptionToFile(Path path, int key) {
         String allStr = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,\":-!? ";
 
         char[] allChar = allStr.toCharArray();
@@ -90,3 +95,4 @@ public class Encryption {
         }
     }
 }
+

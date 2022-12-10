@@ -66,10 +66,8 @@ public class Decoding {
                     System.out.println("В тексте используются следующие запрещенные символы: " + arrInFile.get(i));
                     arrCode.add(i, arrInFile.get(i));
                 } else {
-                    //АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,":-!?
-
                     for (int j = 0; j < arrAll.size(); j++) {
-                        if (arrAll.get(j).equals(arrInFile.get(i)) && (j - key) <= 0) {
+                        if (arrAll.get(j).equals(arrInFile.get(i)) && (j - key) < 0) {
                             arrCode.add(i, arrAll.get(j - key + arrAll.size()));
                         } else if (arrAll.get(j).equals(arrInFile.get(i))){
                             arrCode.add(i, arrAll.get(j - key));
@@ -84,7 +82,7 @@ public class Decoding {
             }
             writer.flush();
             writer.close();
-            System.out.println("Шифр записан в файл: C:\\Users\\Александр\\Downloads\\decodingFile.txt");
+            System.out.println("Расшифрованный текст записан в файл: C:\\Users\\Александр\\Downloads\\decodingFile.txt");
 
         } catch (IOException e) {
             e.getStackTrace();
