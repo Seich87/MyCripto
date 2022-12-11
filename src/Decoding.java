@@ -5,43 +5,45 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Decoding {
-    public void decoding() {
-        try {
-            Scanner scanner = new Scanner(System.in);
-            String strPath;
-            int key;
-            Path path;
+    Scanner scanner = new Scanner(System.in);
+    private int key = keySet();
+    private Path path = filePath();
 
-            do {
-                System.out.println("Введите ключ от 1 до 74");
-                while (!scanner.hasNextInt()) {
-                    System.out.println("Введите число");
-                    scanner.next();
-                }
-                key = scanner.nextInt();
-                if (key < 1 || key > 74) System.out.println("Введите число от 1 до 74 включительно");
-            } while (key < 1 || key > 74);
-
-
-            System.out.println("Введите путь к текстовому файлу с зашифрованным текстом");
-
-            strPath = scanner.next();
-            path = Paths.get(strPath);
-
-            if (!(path.toFile().isFile())) {
-                System.out.println("Введенный файл отсутствует по указанному пути на диске");
-                return;
-            }
-
-
-            decodingToFile(path, key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public int getKey() {
+        return key;
+    }
+    public Path getPath() {
+        return path;
     }
 
+    private int keySet() {
+        do {
+            System.out.println("Введите ключ от 1 до 74");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Введите число");
+                scanner.next();
+            }
+            key = scanner.nextInt();
+            if (key < 1 || key > 74) System.out.println("Введите число от 1 до 74 включительно");
+        } while (key < 1 || key > 74);
+        return key;
+    }
 
-    private static void decodingToFile(Path path, int key) {
+    private Path filePath() {
+        String strPath = "";
+        while (true) {
+            System.out.println("Введите путь к текстовому файлу с зашифрованным текстом");
+            strPath = scanner.next();
+            if (!(Paths.get(strPath).toFile().isFile())) {
+                System.out.println("Данный файл отсутствует");
+            } else if (Paths.get(strPath).toFile().isFile()) {
+                break;
+            }
+        }
+        return Path.of(strPath);
+    }
+
+    void decodingToFile(Path path, int key) {
         String allStr = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя.,\":-!? ";
 
         char[] allChar = allStr.toCharArray();

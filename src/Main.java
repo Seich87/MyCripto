@@ -3,15 +3,17 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        int num = selectionMode();
 
-        if (selectionMode() == 1) {
+        if (num == 1) {
             Encryption encr = new Encryption();
             encr.encryptionToFile(encr.getPath(), encr.getKey());
 
-        } else if (selectionMode() == 2) {
+        } else if (num == 2) {
             Decoding dec = new Decoding();
-            dec.decoding();
-        } else if (selectionMode() == 3) {
+            dec.decodingToFile(dec.getPath(), dec.getKey());
+
+        } else if (num == 3) {
             BruteForce brForce = new BruteForce();
             brForce.bruteForce();
         }
@@ -22,7 +24,8 @@ public class Main {
     }
 
     private static int selectionMode() {
-        int num;
+
+       int num;
         while (true) {
             try {
                 System.out.println("Выберете действие: Шифрование (1) / Расшифровка (2) / Метод Brute force (3)");
