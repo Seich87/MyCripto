@@ -2,6 +2,8 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Encryption {
@@ -80,13 +82,13 @@ public class Encryption {
                 }
             }
 
-            Writer writer = new FileWriter("C:\\Users\\Александр\\Downloads\\encryptionFile.txt");
+            Writer writer = new FileWriter("C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\encryptionFile.txt");
             for (Character ch : arrCode) {
                 writer.write(ch);
             }
             writer.flush();
             writer.close();
-            System.out.println("Шифр записан в файл: C:\\Users\\Александр\\Downloads\\encryptionFile.txt");
+            System.out.println("Шифр записан в файл: C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\encryptionFile.txt");
 
         } catch (IOException e) {
             e.getStackTrace();

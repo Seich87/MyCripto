@@ -46,24 +46,17 @@ public class BruteForce {
             }
 
 
-            for (int k = 1; k <= 2; k++) {
+            for (int k = 1; k < arrAll.size(); k++) {
                 ArrayList<Character> arrCode = arrCodeAdd(arrAll, arrInFile, k);
-                if (arrCode.contains(',') && arrCode.get(arrCode.indexOf(',') + 1).equals(' ')) {
+                if (!textCheck(arrCode)) {
 
-                    // добавить еще проверок
-
-
-                    for (char a : arrCode) {
-                        System.out.print(a + k);
-                    }
-
-                    Writer writer = new FileWriter("C:\\Users\\Александр\\Downloads\\BruteForceFile.txt");
+                    Writer writer = new FileWriter("C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\BruteForceFile.txt");
                     for (Character ch : arrCode) {
                         writer.write(ch);
                     }
                     writer.flush();
                     writer.close();
-                    System.out.println("Расшифрованный текст записан в файл: C:\\Users\\Александр\\Downloads\\decodingFile.txt");
+                    System.out.println("Расшифрованный текст записан в файл: C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\BruteForceFile.txt");
                     System.out.println("Криптографический ключ: " + k);
                     break;
                 } else {
@@ -77,6 +70,24 @@ public class BruteForce {
 
     }
 
+    private ArrayList<Character> arrCodeAdd(ArrayList<Character> arrAll, ArrayList<Character> arrInFile, int k) {
+        ArrayList<Character> arrCode = new ArrayList<>();
+        for (int i = 0; i < arrInFile.size(); i++) {
+            if (!arrAll.contains(arrInFile.get(i))) {
+                arrCode.add(i, arrInFile.get(i));
+            } else {
+                for (int j = 0; j < arrAll.size(); j++) {
+                    if (arrAll.get(j).equals(arrInFile.get(i)) && (j - k) < 0) {
+                        arrCode.add(i, arrAll.get(j - k + arrAll.size()));
+                    } else if (arrAll.get(j).equals(arrInFile.get(i))) {
+                        arrCode.add(i, arrAll.get(j - k));
+                    }
+                }
+            }
+        }
+        return arrCode;
+    }
+
 
     private boolean textCheck(ArrayList<Character> arrCode) {
         if (arrCode.contains(',') && arrCode.get(arrCode.indexOf(',') + 1).equals(' ')) {
@@ -85,24 +96,6 @@ public class BruteForce {
             arrCode.clear();
             return true;
         }
-    }
-
-    private ArrayList<Character> arrCodeAdd(ArrayList<Character> arrAll, ArrayList<Character> arrInFile, int k) {
-        ArrayList<Character> arrCode1 = new ArrayList<>();
-        for (int i = 0; i < arrInFile.size(); i++) {
-            if (!arrAll.contains(arrInFile.get(i))) {
-                arrCode1.add(i, arrInFile.get(i));
-            } else {
-                for (int j = 0; j < arrAll.size(); j++) {
-                    if (arrAll.get(j).equals(arrInFile.get(i)) && (j - k) < 0) {
-                        arrCode1.add(i, arrAll.get(j - k + arrAll.size()));
-                    } else if (arrAll.get(j).equals(arrInFile.get(i))) {
-                        arrCode1.add(i, arrAll.get(j - k));
-                    }
-                }
-            }
-        }
-        return arrCode1;
     }
 }
 

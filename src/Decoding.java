@@ -77,13 +77,13 @@ public class Decoding {
                 }
             }
 
-            Writer writer = new FileWriter("C:\\Users\\Александр\\Downloads\\decodingFile.txt");
+            Writer writer = new FileWriter("C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\decodingFile.txt");
             for (Character ch : arrCode) {
                 writer.write(ch);
             }
             writer.flush();
             writer.close();
-            System.out.println("Расшифрованный текст записан в файл: C:\\Users\\Александр\\Downloads\\decodingFile.txt");
+            System.out.println("Расшифрованный текст записан в файл: C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\decodingFile.txt");
 
         } catch (IOException e) {
             e.getStackTrace();
