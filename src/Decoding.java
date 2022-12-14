@@ -65,7 +65,6 @@ public class Decoding {
 
             for (int i = 0; i < arrInFile.size(); i++) {
                 if (!arrAll.contains(arrInFile.get(i))) {
-                    System.out.println("В тексте используются следующие запрещенные символы: " + arrInFile.get(i));
                     arrCode.add(i, arrInFile.get(i));
                 } else {
                     for (int j = 0; j < arrAll.size(); j++) {

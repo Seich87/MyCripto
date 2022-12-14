@@ -15,17 +15,17 @@ public class Main {
 
         } else if (num == 3) {
             BruteForce brForce = new BruteForce();
-            brForce.bruteForce();
+            brForce.bruteForce(brForce.getPath());
         }
-        //класс и метод по визуализации(); будет возращать при нажатии на кнопку путь к файлу (внутри будет метод,
-        // на который мы будем ссылаться отсюда: Path path = метод() или сделать тут int и Path, а внутри метода геттер и сеттер)
-
 
     }
+    //класс и метод по визуализации(); будет возращать при нажатии на кнопку путь к файлу (внутри будет метод,
+    // на который мы будем ссылаться отсюда: Path path = метод() или сделать тут int и Path, а внутри метода геттер и сеттер)
+
 
     private static int selectionMode() {
 
-       int num;
+        int num;
         while (true) {
             try {
                 System.out.println("Выберете действие: Шифрование (1) / Расшифровка (2) / Метод Brute force (3)");
