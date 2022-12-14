@@ -77,6 +77,16 @@ public class BruteForce {
 
     }
 
+
+    private boolean textCheck(ArrayList<Character> arrCode) {
+        if (arrCode.contains(',') && arrCode.get(arrCode.indexOf(',') + 1).equals(' ')) {
+            return false;
+        } else {
+            arrCode.clear();
+            return true;
+        }
+    }
+
     private ArrayList<Character> arrCodeAdd(ArrayList<Character> arrAll, ArrayList<Character> arrInFile, int k) {
         ArrayList<Character> arrCode1 = new ArrayList<>();
         for (int i = 0; i < arrInFile.size(); i++) {
