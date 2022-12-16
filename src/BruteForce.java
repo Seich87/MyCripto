@@ -91,23 +91,30 @@ public class BruteForce {
 
 
     private boolean textCheck(ArrayList<Character> arrCode) {
-        return !point(arrCode) || !comma(arrCode) || !exclamationMark(arrCode) || !questionMark(arrCode);
+        return point(arrCode) && comma(arrCode) && exclamationMark(arrCode) && questionMark(arrCode);
     }
 
 
     private boolean point(ArrayList<Character> arrCode) {
-        return !arrCode.contains('.') || ((!arrCode.get(arrCode.indexOf('.') + 1).equals(' ') && !arrCode.get(arrCode.indexOf('.') + 1).equals('\n')) || (!Character.isLetter(arrCode.get(arrCode.indexOf('.') - 1))));
+        return (arrCode.contains('.') && (arrCode.get(arrCode.indexOf('.') + 1).equals(' ') || arrCode.get(arrCode.indexOf('.') + 1).equals('.') || arrCode.get(arrCode.indexOf('.') + 2).equals('\n')));
     }
 
     private boolean comma(ArrayList<Character> arrCode) {
-        return !arrCode.contains(',') || ((!arrCode.get(arrCode.indexOf(',') + 1).equals(' ') && !arrCode.get(arrCode.indexOf(',') + 1).equals('\n')) || (!Character.isLowerCase(arrCode.get(arrCode.indexOf(',') - 1))));
+        return (arrCode.contains(',') && arrCode.get(arrCode.indexOf(',') + 1).equals(' '));
     }
+
     private boolean exclamationMark(ArrayList<Character> arrCode) {
-        return !arrCode.contains('!') || ((!arrCode.get(arrCode.indexOf('!') + 1).equals(' ') && !arrCode.get(arrCode.indexOf('!') + 1).equals('\n') && !arrCode.get(arrCode.indexOf('!') + 1).equals('\"') && !arrCode.get(arrCode.indexOf('!') + 1).equals('!')) || (!Character.isLowerCase(arrCode.get(arrCode.indexOf('!') - 1))));
+        if (arrCode.contains('!')) {
+            return (arrCode.get(arrCode.indexOf('!') + 1).equals(' ') || arrCode.get(arrCode.indexOf('!') + 2).equals('\n'));
+        }
+        return true;
     }
 
     private boolean questionMark(ArrayList<Character> arrCode) {
-        return !arrCode.contains('?') || ((!arrCode.get(arrCode.indexOf('?') + 1).equals(' ') && !arrCode.get(arrCode.indexOf('?') + 1).equals('\n') && !arrCode.get(arrCode.indexOf('?') + 1).equals('\"') && !arrCode.get(arrCode.indexOf('?') + 1).equals('?')) || (!Character.isLowerCase(arrCode.get(arrCode.indexOf('?') - 1))));
+        if (arrCode.contains('?')) {
+            return (arrCode.get(arrCode.indexOf('?') + 1).equals(' ') || arrCode.get(arrCode.indexOf('?') + 2).equals('\n'));
+        }
+        return true;
     }
 
 

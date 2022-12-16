@@ -3,6 +3,7 @@ import javax.swing.plaf.basic.DefaultMenuLayout;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.file.Path;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,10 +11,11 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         //Swing swing = new Swing();
         //swing.frame2
 
-       int num = selectionMode();
+        int num = selectionMode();
 
         if (num == 1) {
             Encryption encr = new Encryption();
