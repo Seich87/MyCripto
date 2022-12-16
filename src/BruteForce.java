@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BruteForce {
+
+
     Scanner scanner = new Scanner(System.in);
     private final Path path = filePath();
 
@@ -48,7 +50,7 @@ public class BruteForce {
 
             for (int k = 1; k < arrAll.size(); k++) {
                 ArrayList<Character> arrCode = arrCodeAdd(arrAll, arrInFile, k);
-                if (!textCheck(arrCode)) {
+                if (textCheck(arrCode)) {
 
                     Writer writer = new FileWriter("C:\\Java\\MyProject\\MyCripto\\MyCripto\\src\\BruteForceFile.txt");
                     for (Character ch : arrCode) {
@@ -63,9 +65,8 @@ public class BruteForce {
                     arrCode.clear();
                 }
             }
-        } catch (
-                IOException e) {
-            e.getStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
@@ -90,13 +91,26 @@ public class BruteForce {
 
 
     private boolean textCheck(ArrayList<Character> arrCode) {
-        if (arrCode.contains(',') && arrCode.get(arrCode.indexOf(',') + 1).equals(' ')) {
-            return false;
-        } else {
-            arrCode.clear();
-            return true;
-        }
+        return !point(arrCode) || !comma(arrCode) || !exclamationMark(arrCode) || !questionMark(arrCode);
     }
+
+
+    private boolean point(ArrayList<Character> arrCode) {
+        return !arrCode.contains('.') || ((!arrCode.get(arrCode.indexOf('.') + 1).equals(' ') && !arrCode.get(arrCode.indexOf('.') + 1).equals('\n')) || (!Character.isLetter(arrCode.get(arrCode.indexOf('.') - 1))));
+    }
+
+    private boolean comma(ArrayList<Character> arrCode) {
+        return !arrCode.contains(',') || ((!arrCode.get(arrCode.indexOf(',') + 1).equals(' ') && !arrCode.get(arrCode.indexOf(',') + 1).equals('\n')) || (!Character.isLowerCase(arrCode.get(arrCode.indexOf(',') - 1))));
+    }
+    private boolean exclamationMark(ArrayList<Character> arrCode) {
+        return !arrCode.contains('!') || ((!arrCode.get(arrCode.indexOf('!') + 1).equals(' ') && !arrCode.get(arrCode.indexOf('!') + 1).equals('\n') && !arrCode.get(arrCode.indexOf('!') + 1).equals('\"') && !arrCode.get(arrCode.indexOf('!') + 1).equals('!')) || (!Character.isLowerCase(arrCode.get(arrCode.indexOf('!') - 1))));
+    }
+
+    private boolean questionMark(ArrayList<Character> arrCode) {
+        return !arrCode.contains('?') || ((!arrCode.get(arrCode.indexOf('?') + 1).equals(' ') && !arrCode.get(arrCode.indexOf('?') + 1).equals('\n') && !arrCode.get(arrCode.indexOf('?') + 1).equals('\"') && !arrCode.get(arrCode.indexOf('?') + 1).equals('?')) || (!Character.isLowerCase(arrCode.get(arrCode.indexOf('?') - 1))));
+    }
+
+
 }
 
 

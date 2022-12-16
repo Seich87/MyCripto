@@ -20,6 +20,8 @@ public class Encryption {
     }
 
     private int keySet() {
+
+
         do {
             System.out.println("Введите ключ от 1 до 74");
             while (!scanner.hasNextInt()) {

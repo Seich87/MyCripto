@@ -1,9 +1,19 @@
+import javax.swing.*;
+import javax.swing.plaf.basic.DefaultMenuLayout;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
+
+
     public static void main(String[] args) {
-        int num = selectionMode();
+        //Swing swing = new Swing();
+        //swing.frame2
+
+       int num = selectionMode();
 
         if (num == 1) {
             Encryption encr = new Encryption();
@@ -19,9 +29,6 @@ public class Main {
         }
 
     }
-    //класс и метод по визуализации(); будет возращать при нажатии на кнопку путь к файлу (внутри будет метод,
-    // на который мы будем ссылаться отсюда: Path path = метод() или сделать тут int и Path, а внутри метода геттер и сеттер)
-
 
     private static int selectionMode() {
 
@@ -50,6 +57,8 @@ public class Main {
         }
         return num;
     }
+
+
 }
 
 
