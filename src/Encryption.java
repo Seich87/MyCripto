@@ -23,14 +23,14 @@ public class Encryption {
 
 
         do {
-            System.out.println("Введите ключ от 1 до 74");
+            System.out.println("Введите ключ от 1 до 73");
             while (!scanner.hasNextInt()) {
                 System.out.println("Введите число");
                 scanner.next();
             }
             key = scanner.nextInt();
-            if (key < 1 || key > 74) System.out.println("Введите число от 1 до 74 включительно");
-        } while (key < 1 || key > 74);
+            if (key < 1 || key > 73) System.out.println("Введите число от 1 до 73 включительно");
+        } while (key < 1 || key > 73);
         return key;
     }
 
